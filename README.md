@@ -6,4 +6,6 @@
 2) Herunterladen des Projekts
 3) Erstellen einer Datenbank
 
-3) Die Datein im Ordner **Datenbank** in Datenbank importieren
+![image](https://user-images.githubusercontent.com/46625416/82147798-8686ac80-9850-11ea-8a90-6645a76c11c8.png)
+
+ Die Datein im Ordner **Datenbank** in Datenbank importieren
