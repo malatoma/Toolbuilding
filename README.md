@@ -8,4 +8,15 @@
 
 ![image](https://user-images.githubusercontent.com/46625416/82147798-8686ac80-9850-11ea-8a90-6645a76c11c8.png)
 
- Die Datein im Ordner **Datenbank** in Datenbank importieren
+ 4) Die Datein im Ordner **Datenbank** in Datenbank importieren
+ Beispiel PostgreSQL:
+ - Query Tool unter Tools öffnen
+ 
+ ![image](https://user-images.githubusercontent.com/46625416/82147853-fc8b1380-9850-11ea-8317-bef941d526f0.png)
+ 
+ - Datei importieren/öffnen
+ 
+ 
+ - Starten
+ 
+ 
