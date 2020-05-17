@@ -11,7 +11,8 @@
  4) Erweitern der Datenbank um PostGIS
  - in einem Query Tool Fenster folgenden Code eingeben
  >CREATE EXTENSION IF NOT EXISTS postgis WITH SCHEMA public;
- 
+ <br>
+ <br>
  5) Die Datein im Ordner **Datenbank** in Datenbank importieren
  Beispiel PostgreSQL:
  - Query Tool unter Tools öffnen
