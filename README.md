@@ -8,7 +8,10 @@
 
 ![image](https://user-images.githubusercontent.com/46625416/82147798-8686ac80-9850-11ea-8a90-6645a76c11c8.png)
 
- 4) Die Datein im Ordner **Datenbank** in Datenbank importieren
+ 4)Erweitern der Datenbank um PostGIS
+ - in einem Query Tool Fenster folgenden Code eingeben
+ >CREATE EXTENSION IF NOT EXISTS postgis WITH SCHEMA public;
+ 5) Die Datein im Ordner **Datenbank** in Datenbank importieren
  Beispiel PostgreSQL:
  - Query Tool unter Tools öffnen
  
@@ -26,6 +29,4 @@
  
  ![image](https://user-images.githubusercontent.com/46625416/82148025-1842e980-9852-11ea-8cb2-5f275119b3f6.png)
  
- 5)
- 
- 
+ 6)
