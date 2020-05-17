@@ -15,11 +15,17 @@
  ![image](https://user-images.githubusercontent.com/46625416/82147853-fc8b1380-9850-11ea-8317-bef941d526f0.png)
  
  - Datei importieren/öffnen
+     - Reihenfolge:
+         - create_tables.sql
+         - bremen_gesamt.sql
+         - stadtteile_bremen.sql
  
  ![image](https://user-images.githubusercontent.com/46625416/82147960-9652c080-9851-11ea-8164-7e66727e1c65.png)
  
- 
  - Starten
  
+ ![image](https://user-images.githubusercontent.com/46625416/82148025-1842e980-9852-11ea-8cb2-5f275119b3f6.png)
+ 
+ 5)
  
  
