@@ -16,7 +16,10 @@
  
  - Datei importieren/öffnen
  
+ ![image](https://user-images.githubusercontent.com/46625416/82147960-9652c080-9851-11ea-8164-7e66727e1c65.png)
+ 
  
  - Starten
+ 
  
  
