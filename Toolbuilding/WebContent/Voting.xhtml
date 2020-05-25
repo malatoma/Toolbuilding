@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"     
+	xmlns:h="http://xmlns.jcp.org/jsf/html"      
+	xmlns:f="http://xmlns.jcp.org/jsf/core"> 
+	
+<f:view locale="#{facesContext.externalContext.request.locale}">
+	
+	<h:head>
+		<title><h:outputText value="#{vhtexte.home}"/></title>
+		<link rel='stylesheet' type='text/css' href='css/Style.css'/>
+	</h:head>
+	
+	<h:body>
+		
+		<nav class="page-header fixed-top">
+			<ul>
+				<li><a href="Home.xhtml"><b><h:outputText value="#{vhtexte.home}"/></b></a></li>
+				<li><a href="Voting.xhtml"><b><h:outputText value="#{vhtexte.voting}"/></b></a></li>
+				<li><a href="Download.xhtml"><b><h:outputText value="#{vhtexte.download}"/></b></a></li>
+				<li><a href="Login.xhtml"><b><h:outputText value="#{vhtexte.login}"/></b></a></li>
+				<li><a href="Impressum.xhtml"><b><h:outputText value="#{vhtexte.impressum}"/></b></a></li>
+			</ul>
+		</nav>
+		
+		<table frame="border" rules="all" cellpadding="10" cellspacing="5">
+    		<caption><h:outputText value="#{vhtexte.projekte}"/></caption>
+    		<tr>
+    			<th><h:outputText value="#{vhtexte.projekt1}"/></th>
+    		</tr>
+    		<tr>
+    			<th><h:outputText value="#{vhtexte.projekt2}"/></th>
+   			</tr>
+    		<tr>
+    			<th><h:outputText value="#{vhtexte.projekt3}"/></th>
+    		</tr>
+    		<tr>
+    			<th><h:outputText value="#{vhtexte.etc}"/></th>
+    		</tr>
+		</table>
+		
+		<footer>
+			<hr></hr>
+			<br></br>
+			<b><h:outputText value="#{vhtexte.footer}"/></b>
+			<br></br>
+			<br></br>
+		</footer>
+	
+	</h:body>
+</f:view>
+</html>

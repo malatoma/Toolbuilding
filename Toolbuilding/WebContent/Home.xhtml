@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"     
+	xmlns:h="http://xmlns.jcp.org/jsf/html"      
+	xmlns:f="http://xmlns.jcp.org/jsf/core"> 
+	
+<f:view locale="#{facesContext.externalContext.request.locale}">
+	
+	<h:head>
+		<title><h:outputText value="#{vhtexte.home}"/></title>
+		<link rel='stylesheet' type='text/css' href='css/Style.css'/>
+	</h:head>
+	
+	<h:body>
+		
+		<nav class="page-header fixed-top">
+			<ul>
+				<li><a href="Home.xhtml"><b><h:outputText value="#{vhtexte.home}"/></b></a></li>
+				<li><a href="Voting.xhtml"><b><h:outputText value="#{vhtexte.voting}"/></b></a></li>
+				<li><a href="Download.xhtml"><b><h:outputText value="#{vhtexte.download}"/></b></a></li>
+				<li><a href="Login.xhtml"><b><h:outputText value="#{vhtexte.login}"/></b></a></li>
+				<li><a href="Impressum.xhtml"><b><h:outputText value="#{vhtexte.impressum}"/></b></a></li>
+			</ul>
+		</nav>
+		
+		<br></br>
+		<h1><h:outputText value="#{vhtexte.ueberschriftStart}"/></h1>
+		<br></br>
+		<h2><h:outputText value="#{vhtexte.textStart}"/></h2>
+		<br></br>
+		<h2><h:outputText value="#{vhtexte.textStart2}"/></h2>
+		<br></br>
+		<br></br>
+		<h2><h:outputText value="#{vhtexte.textStart3}"/></h2>
+		<br></br>
+		<br></br>
+		<h2><h:outputText value="#{vhtexte.textStart4}"/></h2>
+		<br></br>
+		<br></br>
+		
+		<footer>
+			<hr></hr>
+			<br></br>
+			<b><h:outputText value="#{vhtexte.footer}"/></b>
+			<br></br>
+			<br></br>
+		</footer>
+	
+	</h:body>
+</f:view>
+</html>

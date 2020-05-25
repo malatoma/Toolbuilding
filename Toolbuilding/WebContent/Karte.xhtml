@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"     
+	xmlns:h="http://xmlns.jcp.org/jsf/html"      
+	xmlns:f="http://xmlns.jcp.org/jsf/core"> 
+	
+<f:view locale="#{facesContext.externalContext.request.locale}">
+	
+<h:head>
+
+	<link rel="stylesheet" href="css/Style.css" />
+	<script src="js/schulen_var.js"></script>
+	<script src="js/schulen.js"></script>
+	<script src="js/gebiet.js"></script>
+	<link rel="stylesheet" href="js/leaflet/leaflet.css" />
+	<script src="js/leaflet/leaflet.js"></script>
+	
+	<title><h:outputText value="#{vhtexte.karte}"/></title>
+	
+</h:head>
+
+<h:body>
+	<f:ajax event="load" onevent="initMap()"/>
+
+		<nav>
+			<ul class="page-header fixed-top">
+				<li><a href="Home.xhtml"><b><h:outputText value="#{vhtexte.home}"/></b></a></li>
+				<li><a href="Voting.xhtml"><b><h:outputText value="#{vhtexte.voting}"/></b></a></li>
+				<li><a href="Download.xhtml"><b><h:outputText value="#{vhtexte.download}"/></b></a></li>
+				<li><a href="Login.xhtml"><b><h:outputText value="#{vhtexte.login}"/></b></a></li>
+				<li><a href="Impressum.xhtml"><b><h:outputText value="#{vhtexte.impressum}"/></b></a></li>
+			</ul>
+		</nav>
+	
+	 
+	<br></br>
+  	
+	<h:form name="bezirke" id="bezirke">
+		<b><h:outputText value="#{vhtexte.bezirke}"/></b>
+		<br></br>
+		<br></br>
+		<h:selectOneMenu name="orte" value="#{schulenBean.auswahlGebiete}">
+			<f:selectItems value="#{schulenBean.gebiete}" var="gebiete" itemValue="#{gebiete.id}" itemLabel="#{gebiete.name}"/>
+		</h:selectOneMenu>
+		<br></br>
+		<h:commandButton id="webgis2" value="#{vhtexte.senden}" class="button">
+  			<f:ajax id="a2" execute="@form" render="@form" event="click" listener="#{schulenBean.displayGebiete}"/>
+  		</h:commandButton>
+	</h:form>
+	
+	
+	<h:form name="bezirk_schulen" id="bezirk_schulen">
+		<b><h:outputText value="#{vhtexte.teilueberschriftSchulenBezirke}"/></b>
+		<br></br>
+		<br></br>
+		<h:selectOneMenu name="schulenform2" value="#{schulenBean.auswahlSchulenform}">
+			<f:selectItem itemValue="alle" itemLabel="#{vhtexte.alleSchulen}"/>
+			<f:selectItem itemValue="privatschule" itemLabel="#{vhtexte.privat}"/>
+			<f:selectItem itemValue="oberschule" itemLabel="#{vhtexte.ober}"/>
+			<f:selectItem itemValue="grundschule" itemLabel="#{vhtexte.grund}"/>
+			<f:selectItem itemValue="foerderzentrum" itemLabel="#{vhtexte.foerderzentrum}"/>
+			<f:selectItem itemValue="abendschule" itemLabel="#{vhtexte.abend}"/>
+			<f:selectItem itemValue="durchgaengigesGym" itemLabel="#{vhtexte.gym}"/>
+			<f:selectItem itemValue="schulzentrum" itemLabel="#{vhtexte.schulzentrum}"/>
+			<f:selectItem itemValue="berufsschule" itemLabel="#{vhtexte.beruf}"/>
+			<f:selectItem itemValue="gesundheitsschule" itemLabel="#{vhtexte.gesundheit}"/>
+			<f:selectItem itemValue="verwaltungsschule" itemLabel="#{vhtexte.verwaltung}"/>
+		</h:selectOneMenu>
+		<h:selectOneMenu name="orte2" value="#{schulenBean.auswahlGebiete}">
+			<f:selectItems value="#{schulenBean.gebiete}" var="gebiete" itemValue="#{gebiete.id}" itemLabel="#{gebiete.name}"/>
+		</h:selectOneMenu>
+		<br></br>
+		<h:commandButton id="webgis3" value="#{vhtexte.senden}" class="button">
+  			<f:ajax id="a3" execute="@form" render="@form" event="click" listener="#{schulenBean.displaySchulenGebiete}"/>
+  		</h:commandButton>
+	</h:form>
+	
+
+	<div id="mapid" class="map"></div>
+	
+	<br></br>
+	<br></br>
+	<br></br>
+	
+	<footer>
+		<hr></hr>
+		<br></br>
+		<b><h:outputText value="#{vhtexte.footer}"/></b>
+		<br></br>
+		<br></br>
+	</footer>
+
+</h:body>
+</f:view>
+</html>

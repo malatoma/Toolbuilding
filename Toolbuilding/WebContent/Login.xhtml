@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"     
+	xmlns:h="http://xmlns.jcp.org/jsf/html"      
+	xmlns:f="http://xmlns.jcp.org/jsf/core"> 
+	
+<f:view locale="#{facesContext.externalContext.request.locale}">
+	
+	<h:head>
+		<title><h:outputText value="#{vhtexte.home}"/></title>
+		<link rel='stylesheet' type='text/css' href='css/Style.css'/>
+	</h:head>
+	
+	<h:body>
+		
+		<nav class="page-header fixed-top">
+			<ul>
+				<li><a href="Home.xhtml"><b><h:outputText value="#{vhtexte.home}"/></b></a></li>
+				<li><a href="Voting.xhtml"><b><h:outputText value="#{vhtexte.voting}"/></b></a></li>
+				<li><a href="Download.xhtml"><b><h:outputText value="#{vhtexte.download}"/></b></a></li>
+				<li><a href="Login.xhtml"><b><h:outputText value="#{vhtexte.login}"/></b></a></li>
+				<li><a href="Impressum.xhtml"><b><h:outputText value="#{vhtexte.impressum}"/></b></a></li>
+			</ul>
+		</nav>
+		
+		 <h:form>
+	         <table>
+			   <tr>
+			      <td><h:outputText value="#{vhtexte.user}"/></td>
+			      <td><h:inputText/></td>
+			      <!-- <td><h:inputText value="#{bean.user.name}"/></td> -->
+			   </tr>
+			   <tr>
+			      <td><h:outputText value="#{vhtexte.passwort}"/></td>
+			      <td><h:inputSecret/></td>
+			      <!-- <td><h:inputSecret value="#{bean.user.passwort}"/></td> -->
+			   </tr>
+		   	</table>
+			<br></br>
+			<br></br>
+			<h:commandButton id="webgis3" value="#{vhtexte.anmelden}" class="button">
+			<!-- <f:ajax id="a1" execute="@form" render="@form" event="click" listener="#{beanController.anmelden}"/>		-->
+			</h:commandButton>
+			<br></br>
+		    <br></br>
+		    <b><h:outputText value="#{vhtexte.oder}"/></b>
+		    <br></br>
+		    <br></br>
+			<h:commandButton id="webgis4" value="#{vhtexte.registrieren}" class="button">
+			<!-- <f:ajax id="a1" execute="@form" render="@form" event="click" listener="#{beanController.registrieren}"/>		-->
+	  		</h:commandButton>
+	      </h:form>
+		
+		<footer>
+			<hr></hr>
+			<br></br>
+			<b><h:outputText value="#{vhtexte.footer}"/></b>
+			<br></br>
+			<br></br>
+		</footer>
+	
+	</h:body>
+</f:view>
+</html>
