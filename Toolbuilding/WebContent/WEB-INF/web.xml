@@ -4,26 +4,26 @@ xmlns="http://java.sun.com/xml/ns/javaee"
 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" 
 id="WebApp_ID" 
 version="3.0">
-  <display-name>ProgPrakWeb</display-name>
+  <display-name>Toolbuilding</display-name>
   <context-param>
     <param-name>host</param-name>
-    <param-value>195.37.176.158</param-value>
+    <param-value>localhost</param-value>
   </context-param>
   <context-param>
     <param-name>port</param-name>
-    <param-value>35432</param-value>
+    <param-value>5432</param-value>
   </context-param>
   <context-param>
     <param-name>dbname</param-name>
-    <param-value>PP_2019_jessica_sarah</param-value>
+    <param-value>Toolbuilding</param-value>
   </context-param>
   <context-param>
     <param-name>benutzername</param-name>
-    <param-value>PP_2019_jessica_sarah</param-value>
+    <param-value>postgres</param-value>
   </context-param>
   <context-param>
     <param-name>passwort</param-name>
-    <param-value>123456</param-value>
+    <param-value>dbjessica2018</param-value>
   </context-param>
   <servlet>
     <servlet-name>Rest Servlet</servlet-name>
@@ -47,6 +47,6 @@ version="3.0">
     <url-pattern>*.xhtml</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
-    <welcome-file>Startseite.xhtml</welcome-file>
+    <welcome-file>Home.xhtml</welcome-file>
   </welcome-file-list>
 </web-app>
