@@ -10,11 +10,13 @@ create table users(
 	userid		SERIAL PRIMARY KEY,
 	vorname		VARCHAR(100),
 	nachname	VARCHAR(100),
-	Straße 		VARCHAR(200),
-	Hausnummer	INTEGER,
-	PLZ 		VARCHAR(30),
-	Ort		VARCHAR(100)
-	
+	geburtstag	VARCHAR(100),
+	strasse		VARCHAR(200),
+	hausnummer	INTEGER,
+	plz 		VARCHAR(30),
+	ort		VARCHAR(100),
+	username	VARCHAR(100),
+	passwort	VARCHAR(100)
 );
 
 create table popups(
