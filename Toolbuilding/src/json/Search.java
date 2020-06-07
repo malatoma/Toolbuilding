@@ -61,9 +61,7 @@ public class Search extends HttpServlet
 		
 		switch (splits[1]) 
 		{
-			case "alle":
-				json = gson.toJson(dbi.getAlleSchulen());
-			break;
+			
 		}
 		
 		out.print(json);

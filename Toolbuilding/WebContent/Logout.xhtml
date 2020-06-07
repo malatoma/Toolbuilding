@@ -8,9 +8,12 @@
 	<h:head>
 		<title><h:outputText value="#{vhtexte.home}"/></title>
 		<link rel='stylesheet' type='text/css' href='css/Style.css'/>
+		<script src="js/navbar.js"></script>
 		<script> 
 			function fillContainer(login)
 			{ 
+				console.log("fillContainer()");
+				console.log("login: " + login);
 				if(login == true)
 				{
 					var string = '<ul>' +
@@ -40,67 +43,8 @@
 		
 		<nav class="page-header fixed-top" id="navbar"></nav>
 		
-		<h3><h:outputText value="#{vhtexte.impressum}"/></h3>
-		<br></br>
-		<br></br>
-		<h3><h:outputText value="#{vhtexte.impressumText1}"/></h3>
-		<br></br>
-		<br></br>
-		<b><h:outputText value="#{vhtexte.impressumText2}"/></b>
-		<b><h:outputText value="#{vhtexte.impressumText3}"/></b>
-		<b><h:outputText value="#{vhtexte.impressumText4}"/></b>
-		<br></br>
-		<br></br>
-		<h3><h:outputText value="#{vhtexte.impressumText5}"/></h3>
-		<br></br>
-		<br></br>
-		<b><h:outputText value="#{vhtexte.impressumText6}"/></b>
-		<b><h:outputText value="#{vhtexte.impressumText7}"/></b>
-		<b><h:outputText value="#{vhtexte.impressumText8}"/></b>
-		<br></br>
-		<br></br>
-		<b><h:outputText value="#{vhtexte.impressumText9}"/></b>
-		<br></br>
-		<br></br>
-		<h3><h:outputText value="#{vhtexte.impressumText10}"/></h3>
-		<br></br>
-		<br></br>
-		<b><h:outputText value="#{vhtexte.impressumText11}"/></b>
-		<br></br>
-		<br></br>
-		<h3><h:outputText value="#{vhtexte.impressumText12}"/></h3>
-		<br></br>
-		<br></br>
-		<b><h:outputText value="#{vhtexte.impressumText13}"/></b>
-		<br></br>
-		<br></br>
-		<b><h:outputText value="#{vhtexte.impressumText14}"/></b>
-		<br></br>
-		<br></br>
-		<b><h:outputText value="#{vhtexte.impressumText15}"/></b>
-		<br></br>
-		<br></br>
-		<b><h:outputText value="#{vhtexte.impressumText16}"/></b>
-		<br></br>
-		<br></br>
-		<b><h:outputText value="#{vhtexte.impressumText17}"/></b>
-		<br></br>
-		<br></br>
-		<b><h:outputText value="#{vhtexte.impressumText18}"/></b>
-		<br></br>
-		<br></br>
-		<b><h:outputText value="#{vhtexte.impressumText19}"/></b>
-		<br></br>
-		<br></br>
-		<b><h:outputText value="#{vhtexte.impressumText20}"/></b>
-		<br></br>
-		<br></br>
-		<b><h:outputText value="#{vhtexte.impressumText21}"/></b>
-		<br></br>
-		<br></br>
-		<b><h:outputText value="#{vhtexte.impressumText22}"/></b>
-		
-		
+		<h:commandButton value="#{vhtexte.logout}" class="button" action="#{toolBeanController.logout}"/>
+
 		<footer>
 			<hr></hr>
 			<br></br>

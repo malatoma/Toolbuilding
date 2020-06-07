@@ -14,7 +14,6 @@ import javax.ws.rs.core.Application;
 import javax.ws.rs.core.GenericEntity; 
 import javax.ws.rs.core.Response; 
 import daoimpl.DBImpl; 
-import daten.Schulen;
 import datenbank.DBKommu;
 
 /**
@@ -61,10 +60,9 @@ public class RestService extends Application
 	} 
 	
 	/**
-	 * um alle Schulen anzeigen zu lassen
-	 * @return
+	 * Beispiel
 	 */
-	@Path("alle") 
+/*	@Path("alle") 
 	@GET 
 	@Produces("application/json")
 	public Response alle() 
@@ -72,169 +70,5 @@ public class RestService extends Application
 		GenericEntity<Schulen> myEntity = new GenericEntity<Schulen>(dbi.getAlleSchulen()) {}; 
 		return Response.status(200).entity(myEntity).build(); 
 	}
-	
-	/**
-	 * um alle Grundschulen anzeigen zu lassen
-	 * @return
-	 */
-	@Path("grundschule")
-	@GET
-	@Produces("application/json")
-	public Response grundschulen() 
-	{
-		GenericEntity<Schulen> myEntity = new GenericEntity<Schulen>(dbi.getGrundschulen()) {};
-		return Response.status(200).entity(myEntity).build();
-	}
-	
-	/**
-	 * um alle Privatschulen anzeigen zu lassen
-	 * @return
-	 */
-	@Path("privatschule")
-	@GET
-	@Produces("application/json")
-	public Response privatschulen() 
-	{
-		GenericEntity<Schulen> myEntity = new GenericEntity<Schulen>(dbi.getPrivatschulen()) {};
-		return Response.status(200).entity(myEntity).build();
-	}
-
-	/**
-	 * um alle Oberschulen anzeigen zu lassen
-	 * @return
-	 */
-	@Path("oberschule")
-	@GET
-	@Produces("application/json")
-	public Response oberschulen() 
-	{
-		GenericEntity<Schulen> myEntity = new GenericEntity<Schulen>(dbi.getOberschulen()) {};
-		return Response.status(200).entity(myEntity).build();
-	}
-
-	/**
-	 * um alle Abendschulen anzeigen zu lassen
-	 * @return
-	 */
-	@Path("abendschule")
-	@GET
-	@Produces("application/json")
-	public Response abendschule() 
-	{
-		GenericEntity<Schulen> myEntity = new GenericEntity<Schulen>(dbi.getAbendErwachsenenSchule()) {};
-		return Response.status(200).entity(myEntity).build();
-	}
-
-	/**
-	 * um alle Berufsschulen anzeigen zu lassen
-	 * @return
-	 */
-	@Path("berufsschule")
-	@GET
-	@Produces("application/json")
-	public Response berufsschule() 
-	{
-		GenericEntity<Schulen> myEntity = new GenericEntity<Schulen>(dbi.getBerufsbildeneSchule()) {};
-		return Response.status(200).entity(myEntity).build();
-	}
-
-	/**
-	 * um alle durchgängigen Gymnasien anzeigen zu lassen
-	 * @return
-	 */
-	@Path("durchgaengigesGym")
-	@GET
-	@Produces("application/json")
-	public Response durchgaengigesGym() 
-	{
-		GenericEntity<Schulen> myEntity = new GenericEntity<Schulen>(dbi.getDurchgaengigesGymnasium()) {};
-		return Response.status(200).entity(myEntity).build();
-	}
-
-	/**
-	 * um alle Förderzentren anzeigen zu lassen
-	 * @return
-	 */
-	@Path("foerderzentrum")
-	@GET
-	@Produces("application/json")
-	public Response foerderzentrum() 
-	{
-		GenericEntity<Schulen> myEntity = new GenericEntity<Schulen>(dbi.getFoerderzentrum()) {};
-		return Response.status(200).entity(myEntity).build();
-	}
-
-	/**
-	 * um alle Gesundheitsschulen anzeigen zu lassen
-	 * @return
-	 */
-	@Path("gesundheitsschule")
-	@GET
-	@Produces("application/json")
-	public Response gesundheitsschule() 
-	{
-		GenericEntity<Schulen> myEntity = new GenericEntity<Schulen>(dbi.getGesundheitsschule()) {};
-		return Response.status(200).entity(myEntity).build();
-	}
-
-	/**
-	 * um alle Schulzentren anzeigen zu lassen
-	 * @return
-	 */
-	@Path("schulzentrum")
-	@GET
-	@Produces("application/json")
-	public Response schulzentrum() 
-	{
-		GenericEntity<Schulen> myEntity = new GenericEntity<Schulen>(dbi.getSchulzentrum()) {};
-		return Response.status(200).entity(myEntity).build();
-	}
-
-	/**
-	 * um alle Verwaltungschulen anzeigen zu lassen
-	 * @return
-	 */
-	@Path("verwaltungsschule")
-	@GET
-	@Produces("application/json")
-	public Response verwaltungsschulen() 
-	{
-		GenericEntity<Schulen> myEntity = new GenericEntity<Schulen>(dbi.getVerwaltungsschule()) {};
-		return Response.status(200).entity(myEntity).build();
-	}
-
-	/**
-	 * um alle Geodaten anzeigen zu lassen
-	 * @return
-	 */
-	@Path("geom/{id}")
-	@GET
-	@Produces("application/json")
-	public Response geometrie(@PathParam("id")int id) 
-	{
-		String result = dbi.getGeom(id);
-		return Response.status(200).entity(result).build();
-	}
-	
-	@Path("gebiet/{idOrt}/{idSchule}") 
-	@GET 
-	@Produces("application/json") 
-	public Response schulenImGebiet(@PathParam("idOrt")int idOrt, @PathParam("idSchule")String idSchule) 
-	{ 
-		
-		Schulen schulen = dbi.getSchulenImGebiet(idOrt, idSchule); 
-		
-
-		
-		if (schulen == null)  schulen = new Schulen(); 
-		GenericEntity<Schulen> myEntity = new GenericEntity<Schulen>(schulen) {}; 
-		return Response.status(200).entity(myEntity).build(); 
-	}
-	
-	@Override
-	public Set<Class<?>> getClasses() 
-	{
-		return null;
-	}
-	
+*/
 }

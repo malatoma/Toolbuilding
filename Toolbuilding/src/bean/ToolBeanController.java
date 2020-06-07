@@ -1,121 +1,148 @@
 package bean;
 
+import java.io.Serializable;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 
 /**
- * Diese Bean ist kontrolliert die SchulenBean
+ * Diese Bean ist kontrolliert die ToolBean
  * @author Sarah, Jessica
  *
  */
 
 @ManagedBean
 @RequestScoped
-public class SchulenBeanController 
+public class ToolBeanController implements Serializable
 {
-	@ManagedProperty(value = "#{schulenBean}")
-	private SchulenBean schulenBean;
+	private static final long serialVersionUID = 1L;
+	
+	@ManagedProperty(value = "#{toolBean}")
+	private ToolBean toolBean;
 	
 	/**
 	 * diese Methode ist dafür da die jeweiligen Gruppen auf unserer Webseite zu unterscheiden undn zu setzen
 	 * @return webseite
 	 */
-	public String gruppenSuchen()
+/*	public String gruppenSuchen()
 	{
 		String webseite = "";
 		
-		if(schulenBean.getGruppe().equals("Schüler"))
+		if(toolBean.getGruppe().equals("Schüler"))
 		{
 			webseite = "Schueler";
 		}
-		else if(schulenBean.getGruppe().equals("Eltern"))
+		else if(toolBean.getGruppe().equals("Eltern"))
 		{
 			webseite = "Eltern";
 		}
-		else if(schulenBean.getGruppe().equals("Austauschschüler"))
+		else if(toolBean.getGruppe().equals("Austauschschüler"))
 		{
 			webseite = "Austauschschueler";
 		}
-		else if(schulenBean.getGruppe().equals("Förderverein"))
+		else if(toolBean.getGruppe().equals("Förderverein"))
 		{
 			webseite = "Foerderverein";
 		}
-		else if(schulenBean.getGruppe().equals("Immigranten"))
+		else if(toolBean.getGruppe().equals("Immigranten"))
 		{
 			webseite = "Immigranten";
 		}
 		
 		return webseite;
-	}
+	}*/
 	
 	/**
 	 * wird diese Methode aufgerufen, wird sucheSchulen() aufgerufen und der String "Schueler" wird zurückgegeben"
 	 * @return "Schueler"
 	 */
-	public String suchen1()
+/*	public String suchen1()
 	{
-		schulenBean.sucheSchulen();
+		toolBean.sucheSchulen();
 		
 		return "Schueler";
-	}
+	}*/
 	
 	/**
 	 * wird diese Methode aufgerufen, wird sucheSchulen() aufgerufen und der String "Austauschschueler" wird zurückgegeben"
 	 * @return "Austauschschueler"
 	 */
-	public String suchen2()
+/*	public String suchen2()
 	{
-		schulenBean.sucheSchulen();
+		toolBean.sucheSchulen();
 		
 		return "Austauschschueler";
-	}
+	}*/
 	
 	/**
 	 * wird diese Methode aufgerufen, wird sucheSchulen1() aufgerufen und der String "Eltern" wird zurückgegeben"
 	 * @return "Eltern"
 	 */
-	public String suchen3()
+/*	public String suchen3()
 	{
-		schulenBean.sucheSchulen1();
+		toolBean.sucheSchulen1();
 		
 		return "Eltern";
-	}
+	}*/
 	
 	/**
 	 * wird diese Methode aufgerufen, wird schulenAngeben() und angabenTrue() aufgerufen und 
 	 * der String "Foerderverein" wird zurückgegeben"
 	 * @return "Foerderverein"
 	 */
-	public String suchen4()
+/*	public String suchen4()
 	{
-		schulenBean.schulenAngeben();
-		schulenBean.angabenTrue();
+		toolBean.schulenAngeben();
+		toolBean.angabenTrue();
 		
 		return "Foerderverein";
-	}
+	}*/
 	
 	/**
 	 * wird diese Methode aufgerufen, wird sucheSchulen() aufgerufen und der String "Immigranten" zurückgegeben"
 	 * @return "Immigranten"
 	 */
-	public String suchen5()
+/*	public String suchen5()
 	{
-		schulenBean.sucheSchulen();
+		toolBean.sucheSchulen();
 		
 		return "Immigranten";
-	}
-
-	public SchulenBean getSchulenBean() 
+	}*/
+	
+	public String login()
 	{
-		return schulenBean;
-	}
-
-	public void setSchulenBean(SchulenBean schulenBean) 
-	{
-		this.schulenBean = schulenBean;
+		toolBean.setLogin(true);
+		return "Home";
 	}
 	
+	public String logout()
+	{
+		toolBean.setLogin(false);
+		return "Home";
+	}
+	
+	public String registrieren1()
+	{
+		return "Registrieren";
+	}
+	
+	public String registrieren2()
+	{
+		toolBean.registrieren();
+		toolBean.setLogin(true);
+		return "Home";
+	}
 	
 
+	public ToolBean getToolBean() 
+	{
+		return toolBean;
+	}
+
+	public void setToolBean(ToolBean toolBean) 
+	{
+		this.toolBean = toolBean;
+	}
+	
 }

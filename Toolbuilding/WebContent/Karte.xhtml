@@ -5,63 +5,80 @@
 	
 <f:view locale="#{facesContext.externalContext.request.locale}">
 	
-<h:head>
+	<h:head>
+	
+		<link rel="stylesheet" href="css/Style.css" />
+	<!-- 	<script src="js/schulen_var.js"></script> -->
+	<!--	<script src="js/schulen.js"></script>  -->
+		<script src="js/gebiet.js"></script>  
+		<link rel="stylesheet" href="js/leaflet/leaflet.css" />
+		<script src="js/leaflet/leaflet.js"></script>
+		
+		<title><h:outputText value="#{vhtexte.karte}"/></title>
+		<script> 
+			function fillContainer(login)
+			{ 
+				if(login == true)
+				{
+					var string = '<ul>' +
+									'<li><a href="Home.xhtml"><b><h:outputText value="#{vhtexte.home}"/></b></a></li>' +
+									'<li><a href="Voting.xhtml"><b><h:outputText value="#{vhtexte.voting}"/></b></a></li>' +
+									'<li><a href="Projekte.xhtml"><b><h:outputText value="#{vhtexte.projekte}"/></b></a></li>' +
+									'<li><a href="Logout.xhtml"><b><h:outputText value="#{vhtexte.logout}"/></b></a></li>' +
+									'<li><a href="Impressum.xhtml"><b><h:outputText value="#{vhtexte.impressum}"/></b></a></li>' +
+								'</ul>';
+				}
+				else
+				{
+					var string = '<ul>' +
+									'<li><a href="Home.xhtml"><b><h:outputText value="#{vhtexte.home}"/></b></a></li>' +
+									'<li><a href="Voting.xhtml"><b><h:outputText value="#{vhtexte.voting}"/></b></a></li>' +
+									'<li><a href="Download.xhtml"><b><h:outputText value="#{vhtexte.download}"/></b></a></li>' +
+									'<li><a href="Login.xhtml"><b><h:outputText value="#{vhtexte.login}"/></b></a></li>' +
+									'<li><a href="Impressum.xhtml"><b><h:outputText value="#{vhtexte.impressum}"/></b></a></li>' +
+								'</ul>';
+				}
+				document.getElementById('navbar').innerHTML = string;
+			}
+		</script>
+	</h:head>
+	
+	<h:body onload="fillContainer(#{toolBean.login})">
+		
+		<f:ajax event="load" onevent="initMap()"/>
+				
+		<nav class="page-header fixed-top" id="navbar"></nav>
 
-	<link rel="stylesheet" href="css/Style.css" />
-	<script src="js/schulen_var.js"></script>
-	<script src="js/schulen.js"></script>
-	<script src="js/gebiet.js"></script>
-	<link rel="stylesheet" href="js/leaflet/leaflet.css" />
-	<script src="js/leaflet/leaflet.js"></script>
+		<br></br>
+	  	
+		<h:form name="bezirke" id="bezirke">
+			<b><h:outputText value="#{vhtexte.bezirke}"/></b>
+			<br></br>
+			<br></br>
+			<h:selectOneMenu name="orte" value="#{toolBean.auswahlGebiete}">
+				<f:selectItems value="#{toolBean.gebiete}" var="gebiete" itemValue="#{gebiete.id}" itemLabel="#{gebiete.name}"/>
+			</h:selectOneMenu>
+			<br></br>
+			<h:commandButton value="#{vhtexte.senden}" class="button">
+	  			<f:ajax execute="@form" render="@form" event="click" listener="#{toolBean.displayGebiete}"/>
+	  		</h:commandButton>
+		</h:form>
+		
 	
-	<title><h:outputText value="#{vhtexte.karte}"/></title>
-	
-</h:head>
-
-<h:body>
-	<f:ajax event="load" onevent="initMap()"/>
-
-		<nav>
-			<ul class="page-header fixed-top">
-				<li><a href="Home.xhtml"><b><h:outputText value="#{vhtexte.home}"/></b></a></li>
-				<li><a href="Voting.xhtml"><b><h:outputText value="#{vhtexte.voting}"/></b></a></li>
-				<li><a href="Download.xhtml"><b><h:outputText value="#{vhtexte.download}"/></b></a></li>
-				<li><a href="Login.xhtml"><b><h:outputText value="#{vhtexte.login}"/></b></a></li>
-				<li><a href="Impressum.xhtml"><b><h:outputText value="#{vhtexte.impressum}"/></b></a></li>
-			</ul>
-		</nav>
-	
-	 
-	<br></br>
-  	
-	<h:form name="bezirke" id="bezirke">
-		<b><h:outputText value="#{vhtexte.bezirke}"/></b>
+		<div id="mapid" class="map"></div>
+		
 		<br></br>
 		<br></br>
-		<h:selectOneMenu name="orte" value="#{schulenBean.auswahlGebiete}">
-			<f:selectItems value="#{schulenBean.gebiete}" var="gebiete" itemValue="#{gebiete.id}" itemLabel="#{gebiete.name}"/>
-		</h:selectOneMenu>
 		<br></br>
-		<h:commandButton id="webgis2" value="#{vhtexte.senden}" class="button">
-  			<f:ajax id="a2" execute="@form" render="@form" event="click" listener="#{schulenBean.displayGebiete}"/>
-  		</h:commandButton>
-	</h:form>
+		
+		<footer>
+			<hr></hr>
+			<br></br>
+			<b><h:outputText value="#{vhtexte.footer}"/></b>
+			<br></br>
+			<br></br>
+		</footer>
 	
-
-	<div id="mapid" class="map"></div>
-	
-	<br></br>
-	<br></br>
-	<br></br>
-	
-	<footer>
-		<hr></hr>
-		<br></br>
-		<b><h:outputText value="#{vhtexte.footer}"/></b>
-		<br></br>
-		<br></br>
-	</footer>
-
-</h:body>
-</f:view>
-</html>
+	</h:body>
+	</f:view>
+	</html>
