@@ -55,18 +55,13 @@
 		   	</table>
 			<br></br>
 			<br></br>
-			<h:commandButton value="#{vhtexte.anmelden}" class="button" action="#{toolBeanController.login}">
-			<!-- 	<f:ajax id="a1" execute="@form" render="@form" event="click" listener="#{toolBeanController.login}"/> -->
-			</h:commandButton>
+			<h:commandButton value="#{vhtexte.anmelden}" class="button" action="#{toolBeanController.anmelden}"/>
 			<br></br>
 		    <br></br>
 		    <b><h:outputText value="#{vhtexte.oder}"/></b>
 		    <br></br>
 		    <br></br>
-			<!-- <a href="Registrierung.xhtml" class="button"><h:outputText value="#{vhtexte.registrieren}"/></a> -->
-			<h:commandButton value="#{vhtexte.registrieren}" class="button" action="#{toolBeanController.registrieren1}">
-			<!--<f:ajax id="a1" execute="@form" render="@form" event="click" listener="#{toolBeanController.registrieren}"/> -->	
-	  		</h:commandButton>
+			<h:commandButton value="#{vhtexte.registrieren}" class="button" action="#{toolBeanController.registrieren1}"/>
 	      </h:form>
 		
 		<footer>

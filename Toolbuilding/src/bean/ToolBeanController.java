@@ -22,7 +22,7 @@ public class ToolBeanController implements Serializable
 	private ToolBean toolBean;
 	
 	
-	public String login()
+	public String anmelden()
 	{
 		toolBean.setLogin(true);
 		return "Home";
@@ -36,7 +36,7 @@ public class ToolBeanController implements Serializable
 	
 	public String registrieren1()
 	{
-		return "Registrieren";
+		return "Registrierung";
 	}
 	
 	public String registrieren2()

@@ -41,7 +41,7 @@ public class ToolBean implements Serializable
 	private int auswahlGebiete;
 //	private Gebiete gebiete;
 	
-	private boolean login = false;
+	private boolean login;
 	
 	private User user1= new User();
 	
@@ -49,7 +49,7 @@ public class ToolBean implements Serializable
 	
 	
 	public ToolBean()
-	{
+	{  
 		FacesContext context = FacesContext.getCurrentInstance();
 		ExternalContext exContext = context.getExternalContext();
 		
@@ -68,7 +68,11 @@ public class ToolBean implements Serializable
 		
 		dbi = new DBImpl(dbk.getConnection());
 		
+		//TODO: muss anders gesetzt werden. Sonst wird es bei jedem neuen Seitenkaufruf auf false gesetzt
+		login = false;
+		
 		//gebiete = dbi.suchenGebiete();
+		
 	}
 	
 	
