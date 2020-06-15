@@ -21,7 +21,6 @@ public class ToolBeanController implements Serializable
 	@ManagedProperty(value = "#{toolBean}")
 	private ToolBean toolBean;
 	
-	
 	public String anmelden()
 	{
 		toolBean.setLogin(true);
@@ -46,6 +45,15 @@ public class ToolBeanController implements Serializable
 		return "Home";
 	}
 	
+	public String showKarte()
+	{
+		return "Karte";
+	}
+	
+	public String showProjekte()
+	{
+		return "Projektuebersicht";
+	}
 
 	public ToolBean getToolBean() 
 	{

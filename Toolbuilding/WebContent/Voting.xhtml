@@ -8,19 +8,37 @@
 	<h:head>
 		<title><h:outputText value="#{vhtexte.home}"/></title>
 		<link rel='stylesheet' type='text/css' href='css/Style.css'/>
+		<script> 
+			function fillContainer(login)
+			{ 
+				if(login == true)
+				{
+					var string = '<ul>' +
+									'<li><a href="Home.xhtml"><b><h:outputText value="#{vhtexte.home}"/></b></a></li>' +
+									'<li><a href="Voting.xhtml"><b><h:outputText value="#{vhtexte.voting}"/></b></a></li>' +
+									'<li><a href="Projekte.xhtml"><b><h:outputText value="#{vhtexte.projekte}"/></b></a></li>' +
+									'<li><a href="Logout.xhtml"><b><h:outputText value="#{vhtexte.logout}"/></b></a></li>' +
+									'<li><a href="Impressum.xhtml"><b><h:outputText value="#{vhtexte.impressum}"/></b></a></li>' +
+								'</ul>';
+				}
+				else
+				{
+					var string = '<ul>' +
+									'<li><a href="Home.xhtml"><b><h:outputText value="#{vhtexte.home}"/></b></a></li>' +
+									'<li><a href="Voting.xhtml"><b><h:outputText value="#{vhtexte.voting}"/></b></a></li>' +
+									'<li><a href="Download.xhtml"><b><h:outputText value="#{vhtexte.download}"/></b></a></li>' +
+									'<li><a href="Login.xhtml"><b><h:outputText value="#{vhtexte.login}"/></b></a></li>' +
+									'<li><a href="Impressum.xhtml"><b><h:outputText value="#{vhtexte.impressum}"/></b></a></li>' +
+								'</ul>';
+				}
+				document.getElementById('navbar').innerHTML = string;
+			}
+		</script>
 	</h:head>
 	
-	<h:body>
+	<h:body onload="fillContainer(#{toolBean.login})">
 		
-		<nav class="page-header fixed-top">
-			<ul>
-				<li><a href="Home.xhtml"><b><h:outputText value="#{vhtexte.home}"/></b></a></li>
-				<li><a href="Voting.xhtml"><b><h:outputText value="#{vhtexte.voting}"/></b></a></li>
-				<li><a href="Download.xhtml"><b><h:outputText value="#{vhtexte.download}"/></b></a></li>
-				<li><a href="Login.xhtml"><b><h:outputText value="#{vhtexte.login}"/></b></a></li>
-				<li><a href="Impressum.xhtml"><b><h:outputText value="#{vhtexte.impressum}"/></b></a></li>
-			</ul>
-		</nav>
+		<nav class="page-header fixed-top" id="navbar"></nav>
 		
 		<table frame="border" rules="all" cellpadding="10" cellspacing="5">
     		<caption><h:outputText value="#{vhtexte.projekte}"/></caption>

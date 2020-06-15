@@ -7,7 +7,10 @@ public class User
 	private String username;
 	private String passwort;
 	private String geburtstag;
-	private Adresse adresse;
+	private String strasse;
+	private int hausnr;
+	private String plz;
+	private String ort;
 	
 	
 	public String getVorname() 
@@ -50,15 +53,6 @@ public class User
 		this.geburtstag = geburtstag;
 	}
 	
-	public Adresse getAdresse() 
-	{
-		return adresse;
-	}
-	
-	public void setAdresse(Adresse adresse) 
-	{
-		this.adresse = adresse;
-	}
 
 	public String getPasswort() 
 	{
@@ -68,6 +62,46 @@ public class User
 	public void setPasswort(String passwort) 
 	{
 		this.passwort = passwort;
+	}
+
+	public String getStrasse() 
+	{
+		return strasse;
+	}
+
+	public void setStrasse(String strasse) 
+	{
+		this.strasse = strasse;
+	}
+
+	public int getHausnr() 
+	{
+		return hausnr;
+	}
+
+	public void setHausnr(int hausnr) 
+	{
+		this.hausnr = hausnr;
+	}
+
+	public String getPlz() 
+	{
+		return plz;
+	}
+
+	public void setPlz(String plz) 
+	{
+		this.plz = plz;
+	}
+
+	public String getOrt() 
+	{
+		return ort;
+	}
+
+	public void setOrt(String ort) 
+	{
+		this.ort = ort;
 	}
 
 }

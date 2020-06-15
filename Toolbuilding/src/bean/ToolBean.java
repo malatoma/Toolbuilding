@@ -9,10 +9,12 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 //import javax.faces.context.PartialResponseWriter;
+import javax.faces.context.PartialResponseWriter;
 
 import com.google.gson.Gson;
 
 import daoimpl.DBImpl;
+import daten.Gebiete;
 //import daten.Gebiete;
 import daten.User;
 //import daten.Schulen;
@@ -39,8 +41,9 @@ public class ToolBean implements Serializable
 	private DBImpl dbi;
 
 	private int auswahlGebiete;
-//	private Gebiete gebiete;
+	private Gebiete gebiete;
 	
+	//TODO: soll nur einmal beim Start der Webseite auf false gesetzt werden, danach nur noch über set geändert
 	private boolean login;
 	
 	private User user1= new User();
@@ -68,13 +71,9 @@ public class ToolBean implements Serializable
 		
 		dbi = new DBImpl(dbk.getConnection());
 		
-		//TODO: muss anders gesetzt werden. Sonst wird es bei jedem neuen Seitenkaufruf auf false gesetzt
-		login = false;
-		
-		//gebiete = dbi.suchenGebiete();
+		gebiete = dbi.suchenGebiete();
 		
 	}
-	
 	
 	/**
 	 * Beispiel für Marker
@@ -176,7 +175,7 @@ public class ToolBean implements Serializable
 	/**
 	 * hier werden die jeweiligen Gebiete auf der Karte dargestellt
 	 */
-/*	public void displayGebiete()
+	public void displayGebiete()
 	{
 		String daten = dbi.getGeom(auswahlGebiete);
 		
@@ -203,10 +202,11 @@ public class ToolBean implements Serializable
 				e.printStackTrace();
 			}		
 		}
-	}*/
+	}
 	
 	public void registrieren()
 	{
+		//TODO: Fehlermeldung an den User, dass das fehlende Feld ausgefüllt werden muss. Es muss überall eine Angabe gemacht werden.
 		dbi.insertUser(user1);
 	}
 	
@@ -250,6 +250,14 @@ public class ToolBean implements Serializable
 	public void setUser1(User user1) 
 	{
 		this.user1 = user1;
+	}
+
+	public Gebiete getGebiete() {
+		return gebiete;
+	}
+
+	public void setGebiete(Gebiete gebiete) {
+		this.gebiete = gebiete;
 	}
 
 /*	public Gebiete getGebiete() 

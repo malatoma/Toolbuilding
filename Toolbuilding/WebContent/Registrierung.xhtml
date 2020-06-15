@@ -48,7 +48,7 @@
 			   </tr>
 			   <tr>
 			      <td><h:outputText value="#{vhtexte.nachname}"/></td>
-			      <td><h:inputSecret value="#{toolBean.user1.nachname}"/></td>
+			      <td><h:inputText value="#{toolBean.user1.nachname}"/></td>
 			   </tr>
 			   <tr>
 			      <td><h:outputText value="#{vhtexte.geburtstag}"/></td>
@@ -56,19 +56,19 @@
 			   </tr>
 			   <tr>
 			      <td><h:outputText value="#{vhtexte.strasse}"/></td>
-			      <td><h:inputSecret value="#{toolBean.user1.adresse.strasse}"/></td>
+			      <td><h:inputText value="#{toolBean.user1.strasse}"/></td>
 			   </tr>
 			   <tr>
 			      <td><h:outputText value="#{vhtexte.hausnr}"/></td>
-			      <td><h:inputSecret value="#{toolBean.user1.adresse.hausnr}"/></td>
+			      <td><h:inputText value="#{toolBean.user1.hausnr}"/></td>
 			   </tr>
 			   <tr>
 			      <td><h:outputText value="#{vhtexte.plz}"/></td>
-			      <td><h:inputSecret value="#{toolBean.user1.adresse.plz}"/></td>
+			      <td><h:inputText value="#{toolBean.user1.plz}"/></td>
 			   </tr>
 			   <tr>
 			      <td><h:outputText value="#{vhtexte.ort}"/></td>
-			      <td><h:inputSecret value="#{toolBean.user1.adresse.ort}"/></td>
+			      <td><h:inputText value="#{toolBean.user1.ort}"/></td>
 			   </tr>
 			   <tr>
 			      <td><h:outputText value="#{vhtexte.user}"/></td>
@@ -81,9 +81,7 @@
 		   	</table>
 			<br></br>
 			<br></br>
-			<h:commandButton value="#{vhtexte.registrieren}" class="button">
-				<f:ajax execute="@form" render="@form" event="click" listener="#{toolBeanController.registrieren2}"/>
-	  		</h:commandButton>
+			<h:commandButton value="#{vhtexte.registrieren}" class="button" action="#{toolBeanController.registrieren2}"/>
 	      </h:form>
 		
 		<footer>

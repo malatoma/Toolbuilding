@@ -33,6 +33,8 @@ public class DBImpl extends DBKommu implements DB_Interface
 	private PreparedStatement insertPopups;
 	private PreparedStatement insertProjekte;
 	
+	private PreparedStatement selectGebiet;
+	
 //	private PreparedStatement selectAdressId;
 //	private PreparedStatement selectAdresse; 
 //	private PreparedStatement updateAdresseGeo; 
@@ -121,9 +123,9 @@ public class DBImpl extends DBKommu implements DB_Interface
 			
 			selectSchulen = con.prepareStatement("SELECT schulnr, name, zusatz, adressnr, schulleitungnr, kontaktnr, schule.schultypnr, schultypen.schulform \r\n"
 												+ "FROM schule, schultypen \r\n"
-												+ "WHERE schule.schultypnr = schultypen.schultypnr and schultypen.schulform like ?");
-			selectGebiet = con.prepareStatement("SELECT ST_asGeoJSON(polygon) FROM gebiete WHERE gebiete.id = ?");
-			selectSchulenGebiet = con.prepareStatement("SELECT DISTINCT schulnr, schule.name, zusatz, schule.adressnr, schulleitungnr, kontaktnr, schule.schultypnr "
+												+ "WHERE schule.schultypnr = schultypen.schultypnr and schultypen.schulform like ?");*/
+			selectGebiet = con.prepareStatement("SELECT ST_asGeoJSON(polygon) FROM karten WHERE karten.kartenid = ?");
+			/*selectSchulenGebiet = con.prepareStatement("SELECT DISTINCT schulnr, schule.name, zusatz, schule.adressnr, schulleitungnr, kontaktnr, schule.schultypnr "
 												+ "FROM schule "
 												+ "INNER JOIN gebiete ON gebiete.id = ? "
 												+ "INNER JOIN schultypen ON schule.schultypnr = schultypen.schultypnr and schultypen.schulform like ? "
@@ -156,7 +158,7 @@ public class DBImpl extends DBKommu implements DB_Interface
 		}
 		
 		Statement stmt = null;
-		String query = "SELECT id, name FROM gebiete";
+		String query = "SELECT kartenid, name FROM karten";
 		
 		try
 		{
@@ -289,10 +291,10 @@ public class DBImpl extends DBKommu implements DB_Interface
 			insertUser.setString(1, user.getVorname());
 			insertUser.setString(2, user.getNachname());
 			insertUser.setString(3, user.getGeburtstag());
-			insertUser.setString(4, user.getAdresse().getStrasse());
-			insertUser.setString(5, user.getAdresse().getHausnr());
-			insertUser.setString(6, user.getAdresse().getPlz());
-			insertUser.setString(7, user.getAdresse().getOrt());
+			insertUser.setString(4, user.getStrasse());
+			insertUser.setInt(5, user.getHausnr());
+			insertUser.setString(6, user.getPlz());
+			insertUser.setString(7, user.getOrt());
 			insertUser.setString(8, user.getUsername());
 			insertUser.setString(9, user.getPasswort());
 			
@@ -309,7 +311,7 @@ public class DBImpl extends DBKommu implements DB_Interface
 	 * @param id
 	 * @return geo
 	 */
-/*	public String getGeom(int id) 
+	public String getGeom(int id) 
 	{
 		String geo = "";
 		
@@ -327,6 +329,6 @@ public class DBImpl extends DBKommu implements DB_Interface
 		}
 		
 		return geo;
-	}*/
+	}
 
 }
