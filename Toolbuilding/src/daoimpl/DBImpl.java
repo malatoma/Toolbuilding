@@ -124,7 +124,7 @@ public class DBImpl extends DBKommu implements DB_Interface
 			selectSchulen = con.prepareStatement("SELECT schulnr, name, zusatz, adressnr, schulleitungnr, kontaktnr, schule.schultypnr, schultypen.schulform \r\n"
 												+ "FROM schule, schultypen \r\n"
 												+ "WHERE schule.schultypnr = schultypen.schultypnr and schultypen.schulform like ?");*/
-			selectGebiet = con.prepareStatement("SELECT ST_asGeoJSON(polygon) FROM karten WHERE karten.kartenid = ?");
+			selectGebiet = con.prepareStatement("SELECT ST_asGeoJSON(karten) FROM karten WHERE karten.kartenid = ?");
 			/*selectSchulenGebiet = con.prepareStatement("SELECT DISTINCT schulnr, schule.name, zusatz, schule.adressnr, schulleitungnr, kontaktnr, schule.schultypnr "
 												+ "FROM schule "
 												+ "INNER JOIN gebiete ON gebiete.id = ? "
