@@ -16,16 +16,15 @@
  - alle Datei in den Postgres-Programmordner kopieren
  - die Datenbank im pgAdmin auswählen
  - oben in der Menüleiste "Tools" und dann "Query Tool" auswählen
+ 
+   ![image](https://user-images.githubusercontent.com/46625416/82147853-fc8b1380-9850-11ea-8317-bef941d526f0.png)
+   
  - in einem Query Tool Fenster folgenden Code eingeben
  >CREATE EXTENSION IF NOT EXISTS postgis WITH SCHEMA public;
    
  5) Die Datein im Ordner **Datenbank** in Datenbank importieren  
  Beispiel PostgreSQL:
- - Query Tool öffnen
- 
- ![image](https://user-images.githubusercontent.com/46625416/82147853-fc8b1380-9850-11ea-8317-bef941d526f0.png)
- 
- - Datei importieren/öffnen
+ - Datei importieren/öffnen im Query Tool Fenster
      - Reihenfolge:
          - create_tables.sql
          - bremen_gesamt.sql
