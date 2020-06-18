@@ -6,7 +6,7 @@ function initMap()
 	mapid = L.map('mapid').setView([53.0792962,8.8016937],13); 
 	myRenderer = L.canvas({ padding: 0.5 }); 
 	osm = L.tileLayer(
-	'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiY2FzeTA0MDciLCJhIjoiY2p2eXp5NXpwMGxjMTQ4bHM0cndoMnluNCJ9.MnEjD0zE9MmxONh9myv76g',
+	'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiamViZWhua2UiLCJhIjoiY2tibGJrN2YxMGI1bTMxcXR3d3ZhczY3MiJ9.XAr1LjUuymrJy3QrmmSD5g',
 		{ 
 			maxZoom: 18, 
 			name: 'osm', 
