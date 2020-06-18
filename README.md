@@ -15,7 +15,7 @@
  - die ZIP-Datei extrahieren
  - alle Datei in den Postgres-Programmordner kopieren
  - die Datenbank im pgAdmin auswählen
- - oben in der Menüleiste "File" und dann "Query Tool" auswählen
+ - oben in der Menüleiste "Tools" und dann "Query Tool" auswählen
  - in einem Query Tool Fenster folgenden Code eingeben
  >CREATE EXTENSION IF NOT EXISTS postgis WITH SCHEMA public;
    
