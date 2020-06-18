@@ -9,12 +9,19 @@
 ![image](https://user-images.githubusercontent.com/46625416/82147798-8686ac80-9850-11ea-8a90-6645a76c11c8.png)
 
  4) Erweitern der Datenbank um PostGIS
+ - Klick auf den [Link](http://download.osgeo.org/postgis/windows/)
+ - die Version von PostgreSQL, die auf dem Rechner ist, wählen
+ - die aktuelle Version runterladen
+ - die ZIP-Datei extrahieren
+ - alle Datei in den Postgres-Programmordner kopieren
+ - die Datenbank im pgAdmin auswählen
+ - oben in der Menüleiste "File" und dann "Query Tool" auswählen
  - in einem Query Tool Fenster folgenden Code eingeben
  >CREATE EXTENSION IF NOT EXISTS postgis WITH SCHEMA public;
    
  5) Die Datein im Ordner **Datenbank** in Datenbank importieren  
  Beispiel PostgreSQL:
- - Query Tool unter Tools öffnen
+ - Query Tool öffnen
  
  ![image](https://user-images.githubusercontent.com/46625416/82147853-fc8b1380-9850-11ea-8317-bef941d526f0.png)
  
