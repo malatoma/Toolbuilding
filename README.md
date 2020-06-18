@@ -21,8 +21,7 @@
    
  - in einem Query Tool Fenster folgenden Code eingeben
  >CREATE EXTENSION IF NOT EXISTS postgis WITH SCHEMA public;
-   
-   
+ 
  5) Die Datein im Ordner **Datenbank** in Datenbank importieren  
  Beispiel PostgreSQL:
  - Datei importieren/öffnen im Query Tool Fenster
