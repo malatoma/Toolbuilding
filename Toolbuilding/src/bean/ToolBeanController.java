@@ -45,6 +45,12 @@ public class ToolBeanController implements Serializable
 		return "Home";
 	}
 	
+	public String newProject()
+	{
+		toolBean.project();
+		return "Projektuebersicht";
+	}
+	
 	public String showKarte()
 	{
 		return "Karte";
