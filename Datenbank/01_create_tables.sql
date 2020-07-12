@@ -7,7 +7,6 @@ drop table if exists projekte cascade;
 
 
 create table users(
-	userid		SERIAL PRIMARY KEY,
 	vorname		VARCHAR(100),
 	nachname	VARCHAR(100),
 	geburtstag	VARCHAR(100),
@@ -15,7 +14,7 @@ create table users(
 	hausnummer	INTEGER,
 	plz 		VARCHAR(30),
 	ort		VARCHAR(100),
-	username	VARCHAR(100),
+	username	VARCHAR(100) PRIMARY KEY,
 	passwort	VARCHAR(100)
 );
 
@@ -40,6 +39,6 @@ create table projekte(
 	projektnr	SERIAL PRIMARY KEY,
 	projekte 	Text,
 	status		VARCHAR(100),
-	erstellt_von	INTEGER	REFERENCES users(userid)
+	erstellt_von	TEXT	REFERENCES users(username)
 );
 

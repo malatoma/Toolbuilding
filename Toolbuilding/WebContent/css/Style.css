@@ -86,9 +86,9 @@ b
 	font-size: 20px;
 }
 
-div
+#fehlermeldung
 {
-	text-align: center;
+	color: #FF0000;
 }
 
 form
@@ -209,9 +209,4 @@ footer
 {
 	position: relativ;
 	text-align: center;
-}
-.map
-{
-	
-	/*transform: scale(1,0.7);*/
 }

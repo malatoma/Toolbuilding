@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import bean.ToolBean;
 import daten.Gebiet;
 import daten.Gebiete;
 import daten.User;
@@ -14,11 +15,12 @@ import interfaces.DB_Interface;
 
 /**
  * Die Klasse DBImpl implementiert das DB_Interface und das Interface SchulenSuche
- * @author Sarah, Jessica
+ * @author Jessica, Marco
  *
  */
 public class DBImpl extends DBKommu implements DB_Interface
 {
+	private String fehlermeldungReg;
 	private Connection con;
 	
 	private PreparedStatement createUser;
@@ -34,6 +36,8 @@ public class DBImpl extends DBKommu implements DB_Interface
 	private PreparedStatement insertProjekte;
 	
 	private PreparedStatement selectGebiet;
+	private PreparedStatement selectUser;
+	private PreparedStatement selectUsername;
 	
 //	private PreparedStatement selectAdressId;
 //	private PreparedStatement selectAdresse; 
@@ -41,6 +45,10 @@ public class DBImpl extends DBKommu implements DB_Interface
 	
 //	private PreparedStatement selectGebiet;
 	
+	public DBImpl()
+	{
+		
+	}
 	
 	public DBImpl(Connection con)
 	{
@@ -125,6 +133,8 @@ public class DBImpl extends DBKommu implements DB_Interface
 												+ "FROM schule, schultypen \r\n"
 												+ "WHERE schule.schultypnr = schultypen.schultypnr and schultypen.schulform like ?");*/
 			selectGebiet = con.prepareStatement("SELECT ST_asGeoJSON(karten) FROM karten WHERE karten.kartenid = ?");
+			selectUser = con.prepareStatement("SELECT username FROM users WHERE username = ? AND passwort = ?");
+			selectUsername = con.prepareStatement("SELECT username FROM users WHERE username = ?");
 			/*selectSchulenGebiet = con.prepareStatement("SELECT DISTINCT schulnr, schule.name, zusatz, schule.adressnr, schulleitungnr, kontaktnr, schule.schultypnr "
 												+ "FROM schule "
 												+ "INNER JOIN gebiete ON gebiete.id = ? "
@@ -182,37 +192,6 @@ public class DBImpl extends DBKommu implements DB_Interface
 	
 	
 	/**
-	 * Methode um die Geokoordinaten zu suchen
-	 * @param schulen
-	 * @return geo
-	 */
-/*	public ArrayList<Geodaten> sucheGeokoordinaten(Schulen schulen)
-	{
-		ArrayList<Geodaten> geo = new ArrayList<Geodaten>(); 
-		try 
-		{
-			for(Schule schule : schulen)
-			{
-				Geodaten geodaten= new Geodaten(schule.getAdress());
-				geodaten.geodatenErmitteln();
-				geo.add(geodaten);
-				
-				updateAdresseGeo.setDouble(1, geodaten.getLon());
-				updateAdresseGeo.setDouble(2, geodaten.getLat());
-				updateAdresseGeo.setInt(3, schule.getAdress().getId());
-				updateAdresseGeo.executeUpdate();
-				
-			}
-		} 
-		catch (Exception e) 
-		{
-			e.printStackTrace();
-		}
-		
-		return geo; 
-	}*/
-	
-	/**
 	 * Die Methode deleteTable() ist für das löschen von Daten aus dem Datenbankserver zuständig
 	 */
 	public void deleteTable(String tabellenname, String whereBefehl) throws Exception
@@ -253,39 +232,49 @@ public class DBImpl extends DBKommu implements DB_Interface
 			e.printStackTrace();
 		}
 	}
-
 	
-
-
 	/**
-	 * holt die Adresse aus der Datenbank per Id
-	 * @param id
-	 * @return adresse
+	 * checkt, ob der Username bereits vergeben ist
+	 * 
+	 * Hinweis: Fehlermeldung bei result = null kann ignoriert werden; User wird abgespeichert
+	 * @param user
 	 */
-/*	private Adresse getAdresse(int id)
+	public void checkUsername(User user)
 	{
+		if(con == null)
+		{
+			con = getConnection();
+		}
+		
+		System.out.println("checkUsername()");
+		
 		ResultSet result;
-		Adresse adresse = null;
 		try 
 		{
-			selectAdresse.setInt(1, id); 
-			result = selectAdresse.executeQuery();
-			result.next();
-			adresse = new Adresse(result.getString(2), result.getString(3), result.getString(4), result.getString(5));
-			adresse.setId(result.getInt(1));
-			adresse.setGeodaten(new Geodaten(result.getDouble(6), result.getDouble(7)));
-		} 
+			System.out.println("username: " + user.getUsername());
+			selectUsername.setString(1, user.getUsername());
+			System.out.println("selectUsername");
+			result = selectUsername.executeQuery();
+			if(result.next())
+			{
+				setFehlermeldungReg("Der Username ist bereits vergeben.");
+			}
+		}
 		catch (SQLException e) 
 		{
 			e.printStackTrace();
-		}
-		
-		return adresse;
-	}*/
-	
+		}	
+		System.out.println(getFehlermeldungReg());
+	}
 	
 	public void insertUser(User user)
 	{
+		if(con == null)
+		{
+			con = getConnection();
+		}
+		
+		System.out.println("insertUser()");
 		try 
 		{
 			insertUser.setString(1, user.getVorname());
@@ -313,6 +302,11 @@ public class DBImpl extends DBKommu implements DB_Interface
 	 */
 	public String getGeom(int id) 
 	{
+		if(con == null)
+		{
+			con = getConnection();
+		}
+		
 		String geo = "";
 		
 		ResultSet result;
@@ -329,6 +323,52 @@ public class DBImpl extends DBKommu implements DB_Interface
 		}
 		
 		return geo;
+	}
+	
+	public String anmelden(User user)
+	{
+		if(con == null)
+		{
+			con = getConnection();
+		}
+		
+		String username = "";
+		String fehlermeldung = "Der Username oder das Passwort ist falsch.";
+		
+		ResultSet result;
+		try 
+		{
+			selectUser.setString(1, user.getUsername());
+			selectUser.setString(2, user.getPasswort());
+			result = selectUser.executeQuery();
+			result.next();
+			username = result.getString(1);
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		
+		if(username != null)
+		{
+			return username;
+		}
+		else
+		{
+			return fehlermeldung;
+		}
+		
+	}
+
+
+	public String getFehlermeldungReg() 
+	{
+		return fehlermeldungReg;
+	}
+
+	public void setFehlermeldungReg(String fehlermeldungReg) 
+	{
+		this.fehlermeldungReg = fehlermeldungReg;
 	}
 
 }

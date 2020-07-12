@@ -33,6 +33,15 @@
 				}
 				document.getElementById('navbar').innerHTML = string;
 			}
+			
+			function displayMessage(fehler)
+			{
+				if(fehler != null)
+				{
+					var string = '<b><h:outputText value="#{toolBean.fehlermeldungReg}"/></b>'
+				}
+				document.getElementById('fehlermeldung').innerHTML = string;
+			}
 		</script>
 	</h:head>
 	
