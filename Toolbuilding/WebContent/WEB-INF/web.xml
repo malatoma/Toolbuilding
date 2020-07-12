@@ -23,7 +23,7 @@ version="3.0">
   </context-param>
   <context-param>
     <param-name>passwort</param-name>
-    <param-value>123</param-value>
+    <param-value>dbjessica2018</param-value>
   </context-param>
   <servlet>
     <servlet-name>Rest Servlet</servlet-name>
