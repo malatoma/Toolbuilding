@@ -23,7 +23,7 @@ public interface DB_Interface
 	/**
 	 * folgende Methoden sind für das Lesen aus der Datenbank zuständig
 	 */
-//	public String getGeom(int gebietId);
+	public String getGeom(int gebietId);
 	
 	/**
 	 * verbindungSchließenDB() schließt die Verbindung zur Datenbank

@@ -6,6 +6,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 
+import daoimpl.DBImpl;
+
 /**
  * Diese Bean ist kontrolliert die ToolBean
  * @author Jessica, Marco
@@ -14,7 +16,7 @@ import javax.faces.bean.RequestScoped;
 
 @ManagedBean
 @RequestScoped
-public class ToolBeanController implements Serializable
+public class ToolBeanController extends DBImpl implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 	
@@ -24,6 +26,7 @@ public class ToolBeanController implements Serializable
 	public String anmelden()
 	{
 		toolBean.setLogin(true);
+		toolBean.anmelden();
 		return "Home";
 	}
 	
@@ -40,9 +43,17 @@ public class ToolBeanController implements Serializable
 	
 	public String registrieren2()
 	{
+		System.out.println("registrieren2()");
 		toolBean.registrieren();
-		toolBean.setLogin(true);
-		return "Home";
+		if(toolBean.dbi.getFehlermeldungReg() == null)
+		{
+			toolBean.setLogin(true);
+			return "Home";
+		}
+		else
+		{
+			return "Registrierung";
+		}
 	}
 	
 	public String newProject()
@@ -61,6 +72,7 @@ public class ToolBeanController implements Serializable
 		return "Projektuebersicht";
 	}
 
+	
 	public ToolBean getToolBean() 
 	{
 		return toolBean;

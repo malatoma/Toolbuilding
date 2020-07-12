@@ -18,7 +18,6 @@ import daten.Gebiete;
 import daten.Projekt;
 //import daten.Gebiete;
 import daten.User;
-//import daten.Schulen;
 import datenbank.DBKommu;
 
 /**
@@ -28,7 +27,7 @@ import datenbank.DBKommu;
 
 @ManagedBean
 @RequestScoped
-public class ToolBean implements Serializable
+public class ToolBean extends DBImpl implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 	
@@ -39,7 +38,7 @@ public class ToolBean implements Serializable
 	private String password;
 	
 	private DBKommu dbk;
-	private DBImpl dbi;
+	public DBImpl dbi;
 
 	private int auswahlGebiete;
 	private Gebiete gebiete;
@@ -52,9 +51,9 @@ public class ToolBean implements Serializable
 	
 	private Gson gson = new Gson();
 	
-	
 	public ToolBean()
 	{  
+		super();
 		FacesContext context = FacesContext.getCurrentInstance();
 		ExternalContext exContext = context.getExternalContext();
 		
@@ -208,22 +207,40 @@ public class ToolBean implements Serializable
 	
 	public void registrieren()
 	{
-		//TODO: Fehlermeldung an den User, dass das fehlende Feld ausgefüllt werden muss. Es muss überall eine Angabe gemacht werden.
-		dbi.insertUser(user1);
+		System.out.println("registrieren()");
+		if(user1.getVorname() == null || user1.getNachname() == null || user1.getGeburtstag() == null || user1.getStrasse() == null ||
+				user1.getHausnr() == 0 || user1.getPlz() == null || user1.getOrt() == null || user1.getUsername() == null || 
+				user1.getPasswort() == null)
+		{
+			setFehlermeldungReg("Bitte gebe in allen Felder etwas an.");
+			System.out.println(dbi.getFehlermeldungReg());
+		}
+		else
+		{
+			dbi.checkUsername(user1);
+			System.out.println(dbi.getFehlermeldungReg());
+			if(dbi.getFehlermeldungReg() == null)
+			{
+				insertUser(user1);
+			}
+		}
 	}
 	
+
+	public void anmelden()
+	{
+		dbi.anmelden(user1);
+	}
+
 	public void project() {
 		projekt.currentDate();
 		projekt.setBesitzer(user1.getUsername());
 		projekt.setProjektstatus(true);
 		dbi.insertProjekt(projekt);
 	}
-	
 	public void ProjektAufrufen() {
 		projekt=dbi.selectAllProjekt().getFirst();
 	}
-	
-
 	public boolean isLogin() 
 	{
 		return login;
@@ -280,13 +297,4 @@ public class ToolBean implements Serializable
 		this.projekt = projekt;
 	}
 
-/*	public Gebiete getGebiete() 
-	{
-		return gebiete;
-	}
-
-	public void setGebiete(Gebiete gebiete) 
-	{
-		this.gebiete = gebiete;
-	}*/
 }
