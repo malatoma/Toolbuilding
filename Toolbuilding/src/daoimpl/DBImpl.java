@@ -144,7 +144,7 @@ public class DBImpl extends DBKommu implements DB_Interface
 												+ "FROM schule, schultypen \r\n"
 												+ "WHERE schule.schultypnr = schultypen.schultypnr and schultypen.schulform like ?");*/
 			selectGebiet = con.prepareStatement("SELECT ST_asGeoJSON(karten) FROM karten WHERE karten.kartenid = ?");
-			selectProjekt = con.prepareStatement("SELECT * FROM projekte");
+			selectProjekt = con.prepareStatement("SELECT *,encode(file,'base64') AS efile FROM projekte");
 			selectUser = con.prepareStatement("SELECT username FROM users WHERE username = ? AND passwort = ?");
 			selectUsername = con.prepareStatement("SELECT username FROM users WHERE username = ?");
 			/*selectSchulenGebiet = con.prepareStatement("SELECT DISTINCT schulnr, schule.name, zusatz, schule.adressnr, schulleitungnr, kontaktnr, schule.schultypnr "
@@ -324,6 +324,7 @@ public class DBImpl extends DBKommu implements DB_Interface
 			e.printStackTrace();
 		}
 	}
+	
 	public LinkedList<Projekt> selectAllProjekt(){
 		LinkedList<Projekt> sProjekt = new LinkedList<Projekt>();
 		
@@ -333,12 +334,11 @@ public class DBImpl extends DBKommu implements DB_Interface
 			result = selectProjekt.executeQuery();
 			while(result.next()) {
 				tempProjekt.setBesitzer(result.getString("name"));
-				tempProjekt.setBilder( result.getAsciiStream("file"));
+				tempProjekt.setBilder( result.getString("efile"));
 				tempProjekt.setErstelldatum(result.getDate("erstellt_von"));
 				tempProjekt.setProjektbeschreibung(result.getString("beschreibung"));
 				tempProjekt.setProjektname(result.getString("name"));
 				tempProjekt.setProjektstatus(result.getBoolean("status"));
-				System.out.println("all great");
 				sProjekt.add(tempProjekt);
 				
 			}
