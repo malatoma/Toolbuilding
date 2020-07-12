@@ -41,7 +41,19 @@
 		<nav class="page-header fixed-top" id="navbar"></nav>
 		
 		<h:outputText value="Hier stehen nachher die ganzen Projekte in einer Liste mit Bildern und einer Verlinkung. :)"/>
-		
+		<h:form>
+			<table>
+			<tr>
+				<td><h:outputText value="#{toolBean.projekt.projektname}"/></td>
+			</tr>
+			<tr>
+				<td><h:outputText value="#{toolBean.projekt.bilder}"/></td>
+			</tr>
+			</table>
+			<br></br>
+			<br></br>
+			<h:commandButton value="Projekt erneuern" class="button" action="#{toolBeanController.refreshProject}"/>		
+		</h:form>
 		<footer>
 			<hr></hr>
 			<br></br>

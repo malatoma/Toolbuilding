@@ -5,6 +5,7 @@ import java.sql.Blob;
 import java.sql.Date;
 
 import javax.servlet.http.Part;
+import javax.websocket.Decoder.BinaryStream;
 
 import org.apache.tomcat.jni.File;
 
@@ -15,7 +16,8 @@ public class Projekt {
 	private boolean projektstatus;
 	private Date erstelldatum;
 	private String besitzer;
-	private Part bilder;
+	private Part bilderpart;
+	private InputStream bilder;
 	
 	public String getProjektname() {
 		return projektname;
@@ -23,10 +25,10 @@ public class Projekt {
 	public void setProjektname(String projektname) {
 		this.projektname = projektname;
 	}
-	public Part getBilder() {
+	public InputStream getBilder() {
 		return bilder;
 	}
-	public void setBilder(Part bilder) {
+	public void setBilder(InputStream bilder) {
 		this.bilder = bilder;
 	}
 	public String getProjektbeschreibung() {
@@ -55,5 +57,11 @@ public class Projekt {
 	}
 	public void currentDate() {
 		erstelldatum = new Date(System.currentTimeMillis());
+	}
+	public Part getBilderpart() {
+		return bilderpart;
+	}
+	public void setBilderpart(Part bilderpart) {
+		this.bilderpart = bilderpart;
 	}
 }

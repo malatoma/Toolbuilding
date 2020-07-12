@@ -7,6 +7,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.LinkedList;
+
+import javax.servlet.http.Part;
+
+import org.apache.tomcat.jni.File;
+
+import com.sun.faces.component.visit.PartialVisitContext;
 
 import daten.Gebiet;
 import daten.Gebiete;
@@ -38,6 +45,7 @@ public class DBImpl extends DBKommu implements DB_Interface
 	private PreparedStatement insertProjekte;
 	
 	private PreparedStatement selectGebiet;
+	private PreparedStatement selectProjekt;
 	private PreparedStatement selectUser;
 	private PreparedStatement selectUsername;
 	
@@ -136,6 +144,7 @@ public class DBImpl extends DBKommu implements DB_Interface
 												+ "FROM schule, schultypen \r\n"
 												+ "WHERE schule.schultypnr = schultypen.schultypnr and schultypen.schulform like ?");*/
 			selectGebiet = con.prepareStatement("SELECT ST_asGeoJSON(karten) FROM karten WHERE karten.kartenid = ?");
+			selectProjekt = con.prepareStatement("SELECT * FROM projekte");
 			selectUser = con.prepareStatement("SELECT username FROM users WHERE username = ? AND passwort = ?");
 			selectUsername = con.prepareStatement("SELECT username FROM users WHERE username = ?");
 			/*selectSchulenGebiet = con.prepareStatement("SELECT DISTINCT schulnr, schule.name, zusatz, schule.adressnr, schulleitungnr, kontaktnr, schule.schultypnr "
@@ -234,8 +243,8 @@ public class DBImpl extends DBKommu implements DB_Interface
 		{
 			e.printStackTrace();
 		}
-	}
-	
+	}	
+
 	/**
 	 * checkt, ob der Username bereits vergeben ist
 	 * 
@@ -302,19 +311,42 @@ public class DBImpl extends DBKommu implements DB_Interface
 	{
 		try 
 		{
-			InputStream fis=projekt.getBilder().getInputStream();
+			InputStream fis=projekt.getBilderpart().getInputStream();
 			insertProjekte.setString(1, projekt.getProjektname());
 			insertProjekte.setString(2, projekt.getProjektbeschreibung());
 			insertProjekte.setDate(3, projekt.getErstelldatum());
 			insertProjekte.setBinaryStream(4, fis);
 			insertProjekte.setBoolean(5, true);
-			System.out.println("bis hier ok");
 			insertProjekte.executeUpdate();
 		}
 		catch (Exception e)
 		{
 			e.printStackTrace();
 		}
+	}
+	public LinkedList<Projekt> selectAllProjekt(){
+		LinkedList<Projekt> sProjekt = new LinkedList<Projekt>();
+		
+		ResultSet result;
+		Projekt tempProjekt = new Projekt();
+		try {
+			result = selectProjekt.executeQuery();
+			while(result.next()) {
+				tempProjekt.setBesitzer(result.getString("name"));
+				tempProjekt.setBilder( result.getAsciiStream("file"));
+				tempProjekt.setErstelldatum(result.getDate("erstellt_von"));
+				tempProjekt.setProjektbeschreibung(result.getString("beschreibung"));
+				tempProjekt.setProjektname(result.getString("name"));
+				tempProjekt.setProjektstatus(result.getBoolean("status"));
+				System.out.println("all great");
+				sProjekt.add(tempProjekt);
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return sProjekt;
+		
 	}
 
 	/**

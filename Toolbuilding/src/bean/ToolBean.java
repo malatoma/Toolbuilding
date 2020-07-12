@@ -238,8 +238,9 @@ public class ToolBean extends DBImpl implements Serializable
 		projekt.setProjektstatus(true);
 		dbi.insertProjekt(projekt);
 	}
-	
-
+	public void ProjektAufrufen() {
+		projekt=dbi.selectAllProjekt().getFirst();
+	}
 	public boolean isLogin() 
 	{
 		return login;
