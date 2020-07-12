@@ -1,7 +1,12 @@
 package daten;
 
+import java.io.InputStream;
 import java.sql.Blob;
 import java.sql.Date;
+
+import javax.servlet.http.Part;
+
+import org.apache.tomcat.jni.File;
 
 public class Projekt {
 
@@ -10,7 +15,7 @@ public class Projekt {
 	private boolean projektstatus;
 	private Date erstelldatum;
 	private String besitzer;
-	private Blob bilder;
+	private Part bilder;
 	
 	public String getProjektname() {
 		return projektname;
@@ -18,10 +23,10 @@ public class Projekt {
 	public void setProjektname(String projektname) {
 		this.projektname = projektname;
 	}
-	public Blob getBilder() {
+	public Part getBilder() {
 		return bilder;
 	}
-	public void setBilder(Blob bilder) {
+	public void setBilder(Part bilder) {
 		this.bilder = bilder;
 	}
 	public String getProjektbeschreibung() {

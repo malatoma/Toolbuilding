@@ -40,7 +40,7 @@
 		
 		<nav class="page-header fixed-top" id="navbar"></nav>
 		
-		 <h:form>
+		 <h:form enctype="multipart/form-data">
 	         <table>
 	         <tr>
 			      <td><h:outputText value="#{vhtexte.projektn}"/></td>
@@ -57,7 +57,7 @@
 		   	</table>
 			<br></br>
 			<br></br>
-			<h:commandButton value="#{vhtexte.registrieren}" class="button" action="#{toolBeanController.registrieren2}"/>
+			<h:commandButton value="#{vhtexte.registrieren}" class="button" action="#{toolBeanController.newProject}"/>
 	      </h:form>
 		
 		<footer>

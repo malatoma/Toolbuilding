@@ -1,13 +1,18 @@
 package daoimpl;
 
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import org.apache.tomcat.jni.File;
+
 import daten.Gebiet;
 import daten.Gebiete;
+import daten.Projekt;
 import daten.User;
 import datenbank.DBKommu;
 import interfaces.DB_Interface;
@@ -104,6 +109,7 @@ public class DBImpl extends DBKommu implements DB_Interface
 			
 			//TODO: statements müssen umgeschrieben werden
 			insertUser = con.prepareStatement("INSERT INTO users (vorname, nachname, geburtstag, strasse, hausnummer, plz, ort, username, passwort) Values (?,?,?,?,?,?,?,?,?)");
+			insertProjekte = con.prepareStatement("INSERT INTO projekte (name, beschreibung, erstellt_von, file, status) Values (?,?,?,?,?)");
 			/*insertSchule = con.prepareStatement("INSERT INTO schule (SchulNr, Name, Zusatz, AdressNr,SchulleitungNr, KontaktNr, SchultypNr) Values (?,?,?,?,?,?,?)");
 			insertAdresse = con.prepareStatement("INSERT INTO adresse (Strasse , HausNr , PLZ , Ort) Values (?,?,?,?)");
 			insertSchulleitung = con.prepareStatement("INSERT INTO schulleitung (Titel, Vorname, Nachname) VALUES (?,?,?)");
@@ -299,6 +305,24 @@ public class DBImpl extends DBKommu implements DB_Interface
 			insertUser.setString(9, user.getPasswort());
 			
 			insertUser.executeUpdate();
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+	public void insertProjekt(Projekt projekt)
+	{
+		try 
+		{
+			InputStream fis=projekt.getBilder().getInputStream();
+			insertProjekte.setString(1, projekt.getProjektname());
+			insertProjekte.setString(2, projekt.getProjektbeschreibung());
+			insertProjekte.setDate(3, projekt.getErstelldatum());
+			insertProjekte.setBinaryStream(4, fis);
+			insertProjekte.setBoolean(5, true);
+			System.out.println("bis hier ok");
+			insertProjekte.executeUpdate();
 		}
 		catch (Exception e)
 		{

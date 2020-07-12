@@ -215,7 +215,8 @@ public class ToolBean implements Serializable
 	public void project() {
 		projekt.currentDate();
 		projekt.setBesitzer(user1.getUsername());
-		//dbi.insertProjekt(projekt)
+		projekt.setProjektstatus(true);
+		dbi.insertProjekt(projekt);
 	}
 	
 	
