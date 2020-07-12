@@ -15,6 +15,7 @@ import com.google.gson.Gson;
 
 import daoimpl.DBImpl;
 import daten.Gebiete;
+import daten.Projekt;
 //import daten.Gebiete;
 import daten.User;
 import datenbank.DBKommu;
@@ -46,6 +47,7 @@ public class ToolBean extends DBImpl implements Serializable
 	private boolean login;
 	
 	private User user1= new User();
+	private Projekt projekt = new Projekt();
 	
 	private Gson gson = new Gson();
 	
@@ -224,9 +226,17 @@ public class ToolBean extends DBImpl implements Serializable
 		}
 	}
 	
+
 	public void anmelden()
 	{
 		dbi.anmelden(user1);
+	}
+
+	public void project() {
+		projekt.currentDate();
+		projekt.setBesitzer(user1.getUsername());
+		projekt.setProjektstatus(true);
+		dbi.insertProjekt(projekt);
 	}
 	
 
@@ -270,16 +280,20 @@ public class ToolBean extends DBImpl implements Serializable
 		this.user1 = user1;
 	}
 
-	public Gebiete getGebiete() 
-	{
+	public Gebiete getGebiete() {
 		return gebiete;
 	}
 
-	public void setGebiete(Gebiete gebiete) 
-	{
+	public void setGebiete(Gebiete gebiete) {
 		this.gebiete = gebiete;
 	}
 
+	public Projekt getProjekt() {
+		return projekt;
+	}
 
+	public void setProjekt(Projekt projekt) {
+		this.projekt = projekt;
+	}
 
 }

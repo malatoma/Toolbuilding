@@ -56,6 +56,12 @@ public class ToolBeanController extends DBImpl implements Serializable
 		}
 	}
 	
+	public String newProject()
+	{
+		toolBean.project();
+		return "Projektuebersicht";
+	}
+	
 	public String showKarte()
 	{
 		return "Karte";
