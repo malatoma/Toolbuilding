@@ -219,6 +219,9 @@ public class ToolBean implements Serializable
 		dbi.insertProjekt(projekt);
 	}
 	
+	public void ProjektAufrufen() {
+		projekt=dbi.selectAllProjekt().getFirst();
+	}
 	
 
 	public boolean isLogin() 

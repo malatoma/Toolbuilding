@@ -70,5 +70,8 @@ public class ToolBeanController implements Serializable
 	{
 		this.toolBean = toolBean;
 	}
+	public void refreshProject() {
+		toolBean.ProjektAufrufen();
+	}
 	
 }

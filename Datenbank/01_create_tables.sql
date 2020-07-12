@@ -38,8 +38,10 @@ create table gegenstaende(
 
 create table projekte(
 	projektnr	SERIAL PRIMARY KEY,
-	projekte 	Text,
-	status		VARCHAR(100),
-	erstellt_von	INTEGER	REFERENCES users(userid)
+	beschreibung	Text,
+	name 		Text,
+	status		boolean,
+	file 		bytea,
+	erstellt_von	date
 );
 

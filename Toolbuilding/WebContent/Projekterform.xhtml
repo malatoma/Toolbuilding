@@ -44,20 +44,20 @@
 	         <table>
 	         <tr>
 			      <td><h:outputText value="#{vhtexte.projektn}"/></td>
-			      <td><h:inputText value="#{toolBean.projekt.projektname}"/></td>
+			      <td><h:inputText value="#{toolBean.projekt.projektname}" required="true"/></td>
 			   </tr>
 			   <tr>
 			      <td><h:outputText value="#{vhtexte.projektb}"/></td>
-			      <td><h:inputTextarea value="#{toolBean.projekt.projektbeschreibung}"/></td>
+			      <td><h:inputTextarea value="#{toolBean.projekt.projektbeschreibung}" required="true"/></td>
 			   </tr>
 			   <tr>
 			      <td><h:outputText value="#{vhtexte.projektn}"/></td>
-			      <td><h:inputFile value="#{toolBean.projekt.bilder}"/></td>
+			      <td><h:inputFile value="#{toolBean.projekt.bilderpart}" required="true"/></td>
 			   </tr>
 		   	</table>
 			<br></br>
 			<br></br>
-			<h:commandButton value="#{vhtexte.registrieren}" class="button" action="#{toolBeanController.newProject}"/>
+			<h:commandButton value="Projekt anlegen" class="button" action="#{toolBeanController.newProject}"/>
 	      </h:form>
 		
 		<footer>
