@@ -30,6 +30,8 @@ import interfaces.DB_Interface;
 public class DBImpl extends DBKommu implements DB_Interface
 {
 	private String fehlermeldungReg;
+	private String fehlermeldungAnmel;
+	
 	private Connection con;
 	
 	private PreparedStatement createUser;
@@ -387,7 +389,6 @@ public class DBImpl extends DBKommu implements DB_Interface
 		}
 		
 		String username = "";
-		String fehlermeldung = "Der Username oder das Passwort ist falsch.";
 		
 		ResultSet result;
 		try 
@@ -409,7 +410,8 @@ public class DBImpl extends DBKommu implements DB_Interface
 		}
 		else
 		{
-			return fehlermeldung;
+			setFehlermeldungAnmel("Der Username oder das Passwort ist falsch.");
+			return "";
 		}
 		
 	}
@@ -424,5 +426,16 @@ public class DBImpl extends DBKommu implements DB_Interface
 	{
 		this.fehlermeldungReg = fehlermeldungReg;
 	}
+	
+	public String getFehlermeldungAnmel() 
+	{
+		return fehlermeldungAnmel;
+	}
+
+	public void setFehlermeldungAnmel(String fehlermeldungAnmel) 
+	{
+		this.fehlermeldungAnmel = fehlermeldungAnmel;
+	}
+
 
 }
