@@ -85,5 +85,7 @@ public class ToolBeanController extends DBImpl implements Serializable
 	public void refreshProject() {
 		toolBean.ProjektAufrufen();
 	}
-	
+	public String addProject() {
+		return "Projekterform";
+	}
 }
