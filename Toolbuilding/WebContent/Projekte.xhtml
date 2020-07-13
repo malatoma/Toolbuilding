@@ -39,10 +39,10 @@
 	<h:body onload="fillContainer(#{toolBean.login})">
 		
 		<nav class="page-header fixed-top" id="navbar"></nav>
-		
-		<h:commandButton value="#{vhtexte.registrieren}" class="button" action="#{toolBeanController.showKarte}"/>
-		<h:commandButton value="#{vhtexte.registrieren}" class="button" action="#{toolBeanController.showProjekte}"/>
-		
+		<h:form>
+		<h:commandButton value="Karte" class="button" action="#{toolBeanController.showKarte}"/>
+		<h:commandButton value="Projekte" class="button" action="#{toolBeanController.showProjekte}"/>
+		</h:form>
 		<footer>
 			<hr></hr>
 			<br></br>
