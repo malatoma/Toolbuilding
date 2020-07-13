@@ -230,6 +230,7 @@ public class ToolBean extends DBImpl implements Serializable
 	public void anmelden()
 	{
 		dbi.anmelden(user1);
+		System.out.println("Fehlermeldung Anmelden: " + dbi.getFehlermeldungAnmel());
 	}
 
 	public void project() {
@@ -238,9 +239,11 @@ public class ToolBean extends DBImpl implements Serializable
 		projekt.setProjektstatus(true);
 		dbi.insertProjekt(projekt);
 	}
+	
 	public void ProjektAufrufen() {
 		projekt=dbi.selectAllProjekt().getFirst();
 	}
+	
 	public boolean isLogin() 
 	{
 		return login;

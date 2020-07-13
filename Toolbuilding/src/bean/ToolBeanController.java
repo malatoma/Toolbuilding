@@ -27,7 +27,15 @@ public class ToolBeanController extends DBImpl implements Serializable
 	{
 		toolBean.setLogin(true);
 		toolBean.anmelden();
-		return "Home";
+		if(toolBean.dbi.getFehlermeldungAnmel() == null)
+		{
+			toolBean.setLogin(true);
+			return "Home";
+		}
+		else
+		{
+			return "Login";
+		}
 	}
 	
 	public String logout()
