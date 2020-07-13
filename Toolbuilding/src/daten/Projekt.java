@@ -1,5 +1,8 @@
 package daten;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Blob;
 import java.sql.Date;
@@ -8,6 +11,9 @@ import javax.servlet.http.Part;
 import javax.websocket.Decoder.BinaryStream;
 
 import org.apache.tomcat.jni.File;
+import org.eclipse.yasson.internal.serializer.ByteArrayBase64Serializer;
+
+import javassist.bytecode.ByteArray;
 
 public class Projekt {
 
@@ -17,7 +23,7 @@ public class Projekt {
 	private Date erstelldatum;
 	private String besitzer;
 	private Part bilderpart;
-	private InputStream bilder;
+	private String bilder;
 	
 	public String getProjektname() {
 		return projektname;
@@ -25,11 +31,11 @@ public class Projekt {
 	public void setProjektname(String projektname) {
 		this.projektname = projektname;
 	}
-	public InputStream getBilder() {
+	public String getBilder() {
 		return bilder;
 	}
-	public void setBilder(InputStream bilder) {
-		this.bilder = bilder;
+	public void setBilder(String string) {
+		this.bilder = string;
 	}
 	public String getProjektbeschreibung() {
 		return projektbeschreibung;
