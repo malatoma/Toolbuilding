@@ -1,6 +1,7 @@
 package bean;
 
 import java.io.Serializable;
+import java.util.LinkedList;
 
 //import java.util.ArrayList;
 
@@ -12,6 +13,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.context.PartialResponseWriter;
 
 import com.google.gson.Gson;
+import com.sun.tools.javac.util.List;
 
 import daoimpl.DBImpl;
 import daten.Gebiete;
@@ -239,11 +241,17 @@ public class ToolBean extends DBImpl implements Serializable
 		projekt.setProjektstatus(true);
 		dbi.insertProjekt(projekt);
 	}
-	
+	private LinkedList<Projekt> projekte;
 	public void ProjektAufrufen() {
-		projekt=dbi.selectAllProjekt().getFirst();
+		projekte=dbi.selectAllProjekt();
 	}
-	
+	public boolean nextProjekt() {
+		if(!projekte.isEmpty()) {
+			projekt=projekte.pollFirst();
+			return true;
+		}
+		return false;
+	}
 	public boolean isLogin() 
 	{
 		return login;

@@ -33,14 +33,42 @@
 				}
 				document.getElementById('navbar').innerHTML = string;
 			}
+
+			// TODO: funktion zur Multiple Projektanzeige in arbeit
+			function loadProjekt(){
+				var string1= "";
+				var i =0;
+				#{toolBeanController.refreshProject()};
+				/* while(#{toolBeanController.nextProject()}  &amp;&amp; i != 20 ){
+					string1 += '<table>' +
+								 '<tr>' +
+					'<td><h:outputText value="#{toolBean.projekt.projektname}"/></td>'+
+					'</tr>'+
+					'<tr>'+
+						'<td><img src="data:image/png;base64,#{toolBean.projekt.bilder}"/></td>'+
+					'</tr>'+
+					'</table>'; 
+					i++;
+					console.log(i);
+				}
+				
+				document.getElementById('projekte').innerHTML = string1;  */
+				
+			}
+			function start(){
+				fillContainer(#{toolBean.login}); 
+				loadProjekt();
+			}
 		</script>
 	</h:head>
 	
-	<h:body onload="fillContainer(#{toolBean.login})">
+	<h:body onload="start()">
 		
 		<nav class="page-header fixed-top" id="navbar"></nav>
 		
 		<h:outputText value="Hier stehen nachher die ganzen Projekte in einer Liste mit Bildern und einer Verlinkung. :)"/>
+		<h:form id="projekte">
+		</h:form>
 		<h:form>
 			<table>
 			<tr>
@@ -52,9 +80,9 @@
 			</table>
 			<br></br>
 			<br></br>
-			<h:commandButton value="Projekt erneuern" class="button" action="#{toolBeanController.refreshProject}"/>	
+			<h:commandButton value="Projekt erneuern" class="button" action="loadProjekt"/>	
 			<h:commandButton value="Projekt anlegen" class="button" action="#{toolBeanController.addProject}"/>		
-			</h:form>
+		</h:form>
 		<footer>
 			<hr></hr>
 			<br></br>
